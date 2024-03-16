@@ -1,7 +1,7 @@
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 const ScrollManager = (props) => {
   const { section, onSectionChange } = props;
@@ -13,9 +13,7 @@ const ScrollManager = (props) => {
   data.fill.classList.add("top-0");
   data.fill.classList.add("absolute");
 
-  useEffect(() => {
-   /*  console.log("section",section)
-    console.log("data",data.el) */
+  useLayoutEffect(() => {
     gsap.to(data.el, {
       duration: 1,
       scrollTop: section * data.el.clientHeight,
@@ -34,16 +32,17 @@ const ScrollManager = (props) => {
       return;
     }
    
-    const curSection = Math.floor(data.scroll.current * data.pages -1);
+    const curSection = Math.floor(data.scroll.current * data.pages);
     console.log("current", curSection)
-    if (data.scroll.current > lastScroll.current && curSection === 0) {
+    if (data.scroll.current > lastScroll.current) {
       onSectionChange(1);
     }
+    if (data.scroll.current > lastScroll.current ) {
+      onSectionChange(section + 1);
+    }
     if (
-      data.scroll.current < lastScroll.current &&
-      data.scroll.current < 1 / (data.pages - curSection)
-    ) {
-      onSectionChange(0);
+      data.scroll.current < lastScroll.current) {
+      onSectionChange(section - 1);
     }
    
     lastScroll.current = data.scroll.current;
