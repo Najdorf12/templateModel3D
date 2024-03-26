@@ -28,16 +28,14 @@ const ScrollManager = (props) => {
 
   useFrame(() => {
     if (isAnimating.current) {
-      lastScroll.current = data.scroll.current;
-      return;
+      lastScroll.current = data.scroll.current; 
+      return
     }
    
     const curSection = Math.floor(data.scroll.current * data.pages);
     console.log("current", curSection)
-    if (data.scroll.current > lastScroll.current) {
-      onSectionChange(1);
-    }
-    if (data.scroll.current > lastScroll.current ) {
+    
+    if (data.scroll.current > lastScroll.current && data.scroll.current > 0 ) {
       onSectionChange(section + 1);
     }
     if (

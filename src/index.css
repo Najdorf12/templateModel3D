@@ -2,10 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 #root {
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  body {
-    margin: 0;
-  }
+  width: 98.5vw;
+  height: 100vh;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.about {
+  clip-path: polygon(0 0, 100% 100%, 100% 100%, 0% 100%);
+}
+#horizontal {
+  padding: 100px 200px;
+  background-color: black;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+  align-self: self-start;
+}
+.horizontal__content {
+  display: flex;
+}
+
+.horizontal__item {
+  border: 1px solid #efefef;
+  padding: 200px 150px;
+}
+.horizontal__item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.horizontal__num {
+  font-size: 80px;
+  font-weight: 900;
+  font-stretch: condensed;
+  color: #ff98a2;
+}
+.horizontal__item:last-child{
+  background-color: red;
+  width:100vw;
+}

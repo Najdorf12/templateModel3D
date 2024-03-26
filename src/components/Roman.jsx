@@ -7,53 +7,222 @@ Source: https://sketchfab.com/3d-models/rhetorician-a89f035291d843069d73988cc0e2
 Title: Rhetorician
 */
 
-import React, { useRef,useLayoutEffect } from 'react'
-import { useGLTF, useAnimations,useScroll } from '@react-three/drei'
-import gsap from 'gsap'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef, useLayoutEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
+import gsap from "gsap";
+import { useThree } from "@react-three/fiber";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+//import { useControls } from 'leva'
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Model(props) {
-  const roman = useRef()
-  const { nodes, materials, animations } = useGLTF('/roman3d.gltf')
-  const { actions } = useAnimations(animations, roman)
- const scroll = useScroll();
-const tl = useRef();
-/* useFrame((state,delta) => {
-  tl.current.seek(scroll.offset * tl.current.duration())
-})
-useLayoutEffect(()=>{
-  tl.current = gsap.timeline({defaults:{duration: 10,ease: 'power1.inOut',}}) 
+  const roman = useRef();
+  const { nodes, materials, animations } = useGLTF("/roman3d.gltf");
+  const { actions } = useAnimations(animations, roman);
+  const { scene, camera } = useThree();
+  const tl = gsap.timeline();
+  const section_2 = document.getElementById("horizontal");
+  let box_items = gsap.utils.toArray(".horizontal__item");
 
-tl.current
-.to(roman.current.position,{ x:-28 }, 0)
-.to(roman.current.rotation,{ y: 5 }, 0)
+  
+  /* // ----- used for getting the position for the roman ----
+	 const { cameraPosition, scenePosition, sceneRotation } = useControls({
+	 	cameraPosition: {
+	 		value: {
+	 			x: 5,
+	 			y: 4,
+	 			z: 2.8,
+	 		},
+	 		step: 0.05,
+	 	},
+	 	scenePosition: {
+	 		value: { x: 3.01, y: 0.76, z: 3.7 },
+	 		step: 0.05,
+	 	},
 
-},[])  */
+	 	sceneRotation: {
+	 		value: { x: -0.53, y: -3.48, z: -0.21 },
+	 		step: 0.01,
+	 	},
+	 }); */
 
+  useLayoutEffect(() => {
+    new ScrollTrigger({});
+    // component About.tsx
+    tl.to(camera.position, {
+      x: 45.85,
+      y: 0,
+      z: 45.0,
+      scrollTrigger: {
+        trigger: ".second-section",
+        start: "top bottom",
+        end: "top top",
+        scrub: true,
+        immediateRender: false,
+      },
+    })
+      .to(scene.position, {
+        x: -18.3,
+        y: -1.5,
+        z: -2,
+        scrollTrigger: {
+          trigger: ".second-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      
+      .to(scene.rotation, {
+        x: 0.03,
+        y: 1.6,
+        z: 0.01,
+        scrollTrigger: {
+          trigger: ".second-section",
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+
+      /* THIRDSECTION */
+      .to(camera.position, {
+        x: 75.5,
+        y: 1.7,
+        z: 20,
+        ease: "power1.in",
+        duration: 5,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "100px bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.position, {
+        x: -1.3,
+        y: -1,
+        z: 0.5,
+        ease: "power1.in",
+        duration: 5,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "100px bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+        },
+      })
+      .to(scene.rotation, {
+        x: 0.0,
+        y: 0.9,
+        z: 0.0,
+        ease: "power1.in",
+        duration: 5,
+        scrollTrigger: {
+          trigger: ".third-section",
+          start: "100px bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+     
+        },
+      })
+      .to(scene.position, {
+        z: -2.0,
+        ease: "power1.in",
+        duration: 5,
+        scrollTrigger: {
+          trigger: section_2,
+          start: "100px bottom",
+          end: "top top",
+          scrub: true,
+          immediateRender: false,
+     
+        },
+      })
+      .to(box_items, {
+        xPercent: -100 * (box_items.length - 1),
+        ease: "sine.out",
+        scrollTrigger: {
+          trigger: section_2,
+          pin: true,
+          scrub: 3,
+          start: "50px top",
+          snap: 1 / (box_items.length - 1),  
+          end: "+=" + section_2.offsetWidth, 
+          markers:true,
+          invalidateOnRefresh:true,
+          
+        }
+      })
+      
+      
+      
+    
+  }, []);
+
+  // ---- used for debug ----
+  /* 	 useFrame(() => {
+	 	camera.position.x = cameraPosition.x;
+	 	camera.position.y = cameraPosition.y;
+	 	camera.position.z = cameraPosition.z;
+	 	scene.position.x = scenePosition.x;
+	 	scene.position.y = scenePosition.y;
+	 	scene.position.z = scenePosition.z;
+	 	scene.rotation.x = sceneRotation.x;
+	 	scene.rotation.y = sceneRotation.y;
+	 	scene.rotation.z = sceneRotation.z;
+	 });
+ */
   return (
     <group ref={roman} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="Root">
             <group name="mentor_roman_retopo" position={[-0.266, 0.12, 1.326]}>
-              <mesh name="mentor_roman_retopo_0" geometry={nodes.mentor_roman_retopo_0.geometry} material={materials.Stone} />
+              <mesh
+                name="mentor_roman_retopo_0"
+                geometry={nodes.mentor_roman_retopo_0.geometry}
+                material={materials.Stone}
+              />
             </group>
-            <group name="Empty" position={[0.161, -0.17, 4.808]} rotation={[-0.104, 0.099, 0.002]} scale={0.892}>
+            <group
+              name="Empty"
+              position={[0.161, -0.17, 4.808]}
+              rotation={[-0.104, 0.099, 0.002]}
+              scale={0.892}
+            >
               <group name="nimbus002">
-                <mesh name="nimbus002_0" geometry={nodes.nimbus002_0.geometry} material={materials.Crown} />
+                <mesh
+                  name="nimbus002_0"
+                  geometry={nodes.nimbus002_0.geometry}
+                  material={materials.Crown}
+                />
               </group>
               <group name="nimbus001">
-                <mesh name="nimbus001_0" geometry={nodes.nimbus001_0.geometry} material={materials.Crown} />
+                <mesh
+                  name="nimbus001_0"
+                  geometry={nodes.nimbus001_0.geometry}
+                  material={materials.Crown}
+                />
               </group>
               <group name="nimbus003">
-                <mesh name="nimbus003_0" geometry={nodes.nimbus003_0.geometry} material={materials.Crown} />
+                <mesh
+                  name="nimbus003_0"
+                  geometry={nodes.nimbus003_0.geometry}
+                  material={materials.Crown}
+                />
               </group>
             </group>
           </group>
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/roman3d.gltf')
+useGLTF.preload("/roman3d.gltf");

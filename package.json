@@ -12,9 +12,12 @@
   "dependencies": {
     "@react-three/drei": "^9.101.0",
     "@react-three/fiber": "^8.15.19",
+    "@studio-freight/lenis": "^1.0.42",
+    "@studio-freight/react-lenis": "^0.0.46",
     "framer-motion": "^11.0.8",
     "framer-motion-3d": "^11.0.12",
     "gsap": "^3.12.5",
+    "leva": "^0.9.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.162.0"
