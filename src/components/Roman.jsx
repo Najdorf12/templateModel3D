@@ -21,10 +21,6 @@ export default function Model(props) {
   const { actions } = useAnimations(animations, roman);
   const { scene, camera } = useThree();
   const tl = gsap.timeline();
-  const section_2 = document.getElementById("horizontal");
-  let box_items = gsap.utils.toArray(".horizontal__item");
-
-  
   /* // ----- used for getting the position for the roman ----
 	 const { cameraPosition, scenePosition, sceneRotation } = useControls({
 	 	cameraPosition: {
@@ -45,6 +41,7 @@ export default function Model(props) {
 	 		step: 0.01,
 	 	},
 	 }); */
+
 
   useLayoutEffect(() => {
     new ScrollTrigger({});
@@ -131,38 +128,7 @@ export default function Model(props) {
      
         },
       })
-      .to(scene.position, {
-        z: -2.0,
-        ease: "power1.in",
-        duration: 5,
-        scrollTrigger: {
-          trigger: section_2,
-          start: "100px bottom",
-          end: "top top",
-          scrub: true,
-          immediateRender: false,
-     
-        },
-      })
-      .to(box_items, {
-        xPercent: -100 * (box_items.length - 1),
-        ease: "sine.out",
-        scrollTrigger: {
-          trigger: section_2,
-          pin: true,
-          scrub: 3,
-          start: "50px top",
-          snap: 1 / (box_items.length - 1),  
-          end: "+=" + section_2.offsetWidth, 
-          markers:true,
-          invalidateOnRefresh:true,
-          
-        }
-      })
-      
-      
-      
-    
+  
   }, []);
 
   // ---- used for debug ----

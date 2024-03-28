@@ -1,10 +1,10 @@
 import Interface from "./components/Interface";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./components/Experience";
-import { useEffect } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
-import { motion } from "framer-motion";
 import Works from "./components/Works";
+import Contact from "./components/Contact";
+
 const App = () => {
   const lenis = useLenis(({ scroll }) => {
     // called every scroll
@@ -19,48 +19,30 @@ const App = () => {
           </Canvas>
         </div>
 
-        <section className="first-section bg-zinc-950 w-full h-screen text-gray-500 font-bold text-xl flex  flex-col items-center justify-center relative">
-          <h1>HOME</h1>
-          <p>asdasdsfdgf</p>
+        <section className="first-section bg-zinc-900 w-full h-screen flex flex-col justify-center items-center relative pl-56">
+          <h1 className="relative text-lg md:text-5xl  bg-clip-text text-transparent bg-gradient-to-b from-red-500 to-neutral-600 font-sans font-bold">
+            Hi,Im
+          </h1>
+          <h1 className="relative text-lg md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 font-sans font-bold">
+            AGUSTIN
+          </h1>
+          <h1 className="relative text-lg  md:text-6xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 font-sans font-bold">
+            MORRO
+          </h1>
+          <p className="text-md text-gray-400  max-w-lg  mt-6">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Voluptatum, accusantium ipsa? Quos fugiat culpa laboriosam eaque
+            tempora deleniti impedit suscipit numquam, harum quidem! Magnam nemo
+            sint dignissimos consectetur eius eum.
+          </p>
         </section>
-        <section className=" second-section bg-zinc-950 w-full h-screen self-end flex items-center justify-start relative">
-          <h1 className="about w-[40vw] h-full bg-gray-200"></h1>
+        <section className=" second-section bg-zinc-900 w-full h-screen self-end flex items-center justify-start relative">
+          <h1 className="about w-full h-full bg-zinc-900"></h1>
         </section>
-        <section className="third-section bg-zinc-950 w-full h-screen flex items-center justify-end relative"></section>
-       
-        <section id="horizontal">
-        <div class="container">
-            <div class="horizontal__content">
-                <div class="horizontal__item">
-                    <div class="horizontal__num">1</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num">2</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num">3</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num">4</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num">5</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num">5</div>
-                </div>
-                <div class="horizontal__item">
-                    <div class="horizontal__num ">5</div>
-                </div>
-            </div>
-        </div>
-    </section>
-     
-<section className="contact w-full h-screen bg-red-600">
-
-</section>
-    
+        <section className="third-section bg-zinc-900 w-full h-screen flex items-center justify-end relative"></section>
       </main>
+      <Works />
+      <Contact />
     </ReactLenis>
   );
 };
