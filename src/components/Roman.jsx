@@ -42,7 +42,6 @@ export default function Model(props) {
 	 	},
 	 }); */
 
-
   useLayoutEffect(() => {
     new ScrollTrigger({});
     // component About.tsx
@@ -70,7 +69,7 @@ export default function Model(props) {
           immediateRender: false,
         },
       })
-      
+
       .to(scene.rotation, {
         x: 0.03,
         y: 1.6,
@@ -125,10 +124,8 @@ export default function Model(props) {
           end: "top top",
           scrub: true,
           immediateRender: false,
-     
         },
-      })
-  
+      });
   }, []);
 
   // ---- used for debug ----
