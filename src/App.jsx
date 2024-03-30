@@ -9,6 +9,7 @@ const App = () => {
   const lenis = useLenis(({ scroll }) => {
     // called every scroll
   });
+ 
 
   return (
     <ReactLenis root>
@@ -48,7 +49,7 @@ const App = () => {
         </section>
 
         <section className="second-section bg-zinc-900 w-full h-screen self-end flex items-start justify-end relative pt-44 text-center">
-          <article className="flex flex-col gap-8 w-1/2 mr-28">
+          <article className="flex flex-col gap-8 w-1/2 mr-28 relative">
             <h3 className="font-title font-bold text-6xl text-gray-200 ">
               <span className=" pl-2 bg-clip-text text-transparent bg-gradient-to-b from-red to-neutral-600">
                 A
@@ -69,7 +70,7 @@ const App = () => {
         </section>
 
         <section className="third-section bg-zinc-900 w-full h-screen flex items-start justify-start relative">
-          <article className="w-full relative flex justify-center items-center">
+          <article className="w-full relative flex justify-center items-center -mt-28">
             <ul className="z-10 text-zinc-700 text-9xl flex mt-20 gap-8 justify-center items-center max-w-lg ">
               <li>
                 <i class="bx bxl-javascript"></i>

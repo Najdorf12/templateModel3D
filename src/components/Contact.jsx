@@ -13,18 +13,19 @@ const Contact = () => {
     end:"5% 40%",
     scrub:2, 
     pin:true,  
+    markers: true
 }});
    tl.to("#top",{
-    top: "-50%", 
+    top: "-100%", 
     ease:"power1.in"
  },'a') 
- .to("#bottom",{
+
+/*  
+.to("#bottom",{
   bottom: "-50%",
   ease:"power1.in"
 
 },'a') 
-/*  
-
 .to(".content",{
  delay: 5,
  marginTop: "0%"
@@ -40,12 +41,12 @@ const Contact = () => {
 
   return (
     <>
-      <div id="main">
-        <div id="top">
-          <h1 id="top-h1 font-text">CREATIVE</h1>
+      <div id="main" >
+        <div id="top" className="bg-gray-300">
+          <h1 id="top-h1">CONTACT</h1>
         </div>
         <div id="center">
-          <div className="content flex flex-col justify-center items-center pb-14 pr-80 ">
+          <div className="content flex flex-col justify-center items-center">
 
             <h3 className="text-8xl text-title font-semibold text-gray-200">
               Lets Talk
@@ -54,9 +55,7 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        <div id="bottom">
-          <h1 id="bottom-h1 font-text">CREATIVE</h1>
-        </div>
+       
       </div>
      
     </>
