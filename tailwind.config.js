@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'title':["Michroma","sans-serif"],
+        'title2': ["Oxanium","sans-serif"],
+        'text': ["Rubik","sans-serif"]
+      },
+      colors: {
+        "red": '#DA0000',
+        "pink":"#CF0052",
+        "purple":"#A2287F"
+      },
+    }
   },
   plugins: [],
 }

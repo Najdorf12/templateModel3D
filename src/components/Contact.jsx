@@ -42,21 +42,20 @@ const Contact = () => {
     <>
       <div id="main">
         <div id="top">
-          <h1 id="top-h1">GRAVITY</h1>
+          <h1 id="top-h1 font-text">CREATIVE</h1>
         </div>
         <div id="center">
-          <div class="content">
-            <h4>GRAVITY</h4>
-            <h3>
-              <i>Browse</i> 
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium obcaecati necessitatibus consectetur natus minus libero fuga quidem iure eaque pariatur ex praesentium delectus totam rerum non quos, deserunt explicabo repellat?
-              </p>
+          <div className="content flex flex-col justify-center items-center pb-14 pr-80 ">
+
+            <h3 className="text-8xl text-title font-semibold text-gray-200">
+              Lets Talk
             </h3>
-            <h2>(17)</h2>
+            <p className="font-normal text-sm text-center max-w-xl text-gray-400 block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium obcaecati necessitatibus consectetur natus minus libero fuga quidem iure eaque pariatur ex praesentium delectus totam rerum non quos, deserunt explicabo repellat?
+            </p>
           </div>
         </div>
         <div id="bottom">
-          <h1 id="bottom-h1">GRAVITY</h1>
+          <h1 id="bottom-h1 font-text">CREATIVE</h1>
         </div>
       </div>
      
