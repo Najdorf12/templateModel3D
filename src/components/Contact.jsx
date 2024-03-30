@@ -42,7 +42,7 @@ const Contact = () => {
   return (
     <>
       <div id="main" >
-        <div id="top" className="bg-gray-300">
+        <div id="top" className="bg-gray-200">
           <h1 id="top-h1">CONTACT</h1>
         </div>
         <div id="center">
